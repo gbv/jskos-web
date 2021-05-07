@@ -1,0 +1,36 @@
+{
+  "name": "jskos-server-web",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite --port 3453",
+    "build": "vite build",
+    "serve": "vite preview",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.vue .",
+    "fix": "npm run lint -- --fix",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "**/*.{js,vue}": [
+      "eslint --fix"
+    ]
+  },
+  "pre-commit": [
+    "lint-staged"
+  ],
+  "dependencies": {
+    "cocoda-sdk": "^1.0.12",
+    "gbv-login-client-vue": "^0.2.4",
+    "vue": "^3.0.11"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.2",
+    "@vue/compiler-sfc": "^3.0.11",
+    "dotenv": "^9.0.0",
+    "eslint": "^7.25.0",
+    "eslint-config-gbv": "^1.0.1",
+    "eslint-plugin-vue": "^7.9.0",
+    "lint-staged": "^10.5.4",
+    "pre-commit": "^1.2.2",
+    "vite": "^2.2.4"
+  }
+}
