@@ -12,8 +12,8 @@ export default defineConfig({
     include: ["gbv-login-client"],
   },
   define: {
-    LOGIN_SERVER: `"${process.env.LOGIN_SERVER}"`,
-    JSKOS_SERVER: `"${process.env.JSKOS_SERVER}"`,
+    LOGIN_SERVER: `"${process.env.LOGIN_SERVER || ""}"`,
+    JSKOS_SERVER: `"${process.env.JSKOS_SERVER || ""}"`,
   },
   resolve: {
     alias: {

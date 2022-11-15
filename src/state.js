@@ -2,9 +2,9 @@ import { reactive, readonly } from "vue"
 
 // See vite.config.js for available environment configurations.
 // eslint-disable-next-line no-undef
-const loginServers = (LOGIN_SERVER || "").split(",")
+const loginServers = (LOGIN_SERVER || "").split(",").filter(Boolean)
 // eslint-disable-next-line no-undef
-const jskosServers = (JSKOS_SERVER || "").split(",")
+const jskosServers = (JSKOS_SERVER || "").split(",").filter(Boolean)
 
 const state = reactive({
   config: {
