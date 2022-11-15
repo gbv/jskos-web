@@ -14,6 +14,7 @@ export default defineConfig({
   define: {
     LOGIN_SERVER: `"${process.env.LOGIN_SERVER || ""}"`,
     JSKOS_SERVER: `"${process.env.JSKOS_SERVER || ""}"`,
+    BASE: `"${process.env.BASE || ""}"`,
   },
   resolve: {
     alias: {

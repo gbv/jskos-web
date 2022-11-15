@@ -50,7 +50,10 @@
   <main id="main">
     <!-- Empty div here to start the alternating section colors -->
     <div />
-    <router-view />
+    <Home v-if="!$route.query.uri" />
+    <Mapping
+      v-else
+      :uri="$route.query.uri" />
     <div class="section">
       <h2>About</h2>
       <p>
@@ -90,9 +93,13 @@
 
 <script>
 import { defineComponent, inject, watch } from "vue"
+import Home from "@/views/Home.vue"
+import Mapping from "@/views/Mapping.vue"
 
 export default defineComponent({
   components: {
+    Home,
+    Mapping,
   },
   setup() {
     const state = inject("state")
