@@ -61,6 +61,31 @@
       </p>
     </div>
   </main>
+  <!-- The footer is mostly copied from https://coli-conc.gbv.de -->
+  <footer class="footer">
+    <p>
+      <strong>coli-conc</strong> is a project of
+      <a
+        href="https://www.gbv.de/"
+        target="_blank">Verbundzentrale des GBV (VZG)</a>.
+      It is funded by German Research Foundation (DFG)
+      <a
+        href="https://gepris.dfg.de/gepris/projekt/276843344"
+        target="_blank">2015-2019</a> and
+      <a
+        href="https://gepris.dfg.de/gepris/projekt/455051200"
+        target="_blank">2021-2023</a>.
+    </p>
+    <p>
+      <a
+        href="https://www.gbv.de/impressum"
+        target="_blank">Impressum</a> |
+      <a href="https://coli-conc.gbv.de/erklaerung-zur-barrierefreiheit/">Barrierefreiheit</a> |
+      <a
+        href="https://www.gbv.de/datenschutz"
+        target="_blank">Datenschutz</a>
+    </p>
+  </footer>
 </template>
 
 <script>
