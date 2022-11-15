@@ -20,4 +20,6 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  // Use base / for everything other than production
+  base: process.env.NODE_ENV === "production" ? process.env.BASE : "/",
 })

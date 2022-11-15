@@ -52,6 +52,8 @@ You can adjust a few configuration options in `.env`. Here are the available opt
 LOGIN_SERVER=http://localhost:3004/,https://coli-conc.gbv.de/login/
 # A list of supported jskos-server instances
 JSKOS_SERVER=http://localhost:3000/,https://coli-conc.gbv.de/api/
+# Base for URL (e.g. when not running under root of domain)
+BASE=/
 ```
 
 ## API
