@@ -8,7 +8,7 @@
         alt="coli-conc Logo">
     </a>
     <h1>
-      JSKOS Server Web
+      JSKOS Web
     </h1>
     <ul class="menu">
       <li>

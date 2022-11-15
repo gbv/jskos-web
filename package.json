@@ -1,5 +1,5 @@
 {
-  "name": "jskos-server-web",
+  "name": "jskos-web",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite --port 3453",
