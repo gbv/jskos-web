@@ -46,8 +46,17 @@
     <div style="clear:both" />
   </header>
   <main id="main">
+    <!-- Empty div here to start the alternating section colors -->
+    <div />
+    <router-view />
     <div class="section">
-      <h2>...</h2>
+      <h2>About</h2>
+      <p>
+        <b>JSKOS Web</b> is a web interface to view JSKOS data. Its source code and technical documentation are hosted on <a href="https://github.com/gbv/jskos-web">GitHub</a>.
+      </p>
+      <p>
+        This project is still under construction.
+      </p>
     </div>
   </main>
 </template>
