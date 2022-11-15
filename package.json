@@ -1,6 +1,9 @@
 {
   "name": "jskos-web",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=14.18"
+  },
   "scripts": {
     "dev": "vite --port 3453",
     "build": "vite build",
