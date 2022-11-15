@@ -8,9 +8,10 @@ export default createRouter({
       path: "/",
       component: Home,
     },
-    // {
-    //   path: '/about',
-    //   component: () => import('@/views/About.vue'),
-    // },
+    {
+      path: "/mapping",
+      component: () => import("@/views/Mapping.vue"),
+      props: route => ({ uri: route.query.uri }),
+    },
   ],
 })
