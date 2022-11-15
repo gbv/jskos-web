@@ -13,7 +13,7 @@
     <ul class="menu">
       <li>
         <a
-          href="https://coli-conc.gbv.de/coli-ana/"
+          href="https://coli-conc.gbv.de/"
           title="Go to coli-conc website">
           ⬅ back to coli-conc website
         </a>
