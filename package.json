@@ -35,6 +35,6 @@
     "eslint-plugin-vue": "^9.7.0",
     "lint-staged": "^13.0.3",
     "pre-commit": "^1.2.2",
-    "vite": "^3.2.3"
+    "vite": "^3.2.4"
   }
 }
