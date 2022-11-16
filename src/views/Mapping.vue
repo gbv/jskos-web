@@ -8,9 +8,20 @@
     <p v-else-if="mapping === null">
       Mapping data from URI {{ uri }} could not be loaded.
     </p>
-    <p v-else>
-      TODO
-    </p>
+    <div v-else>
+      <p v-if="mapping.uri">
+        URI: <auto-link :href="mapping.uri" />
+      </p>
+      <p>
+        Source Scheme: <item-name :item="mapping.fromScheme" /><br>
+        Source Concept: <item-name :item="mapping.from.memberSet[0]" />
+      </p>
+      <p>
+        Target Scheme: <item-name :item="mapping.toScheme" /><br>
+        Target Concept: <item-name :item="mapping.to.memberSet[0]" />
+        <!-- TODO: 1-to-n mappings -->
+      </p>
+    </div>
   </div>
   <div class="section">
     <h2>JSKOS Data</h2>
