@@ -9,18 +9,118 @@
       Mapping data from URI {{ uri }} could not be loaded.
     </p>
     <div v-else>
-      <p v-if="mapping.uri">
-        URI: <auto-link :href="mapping.uri" />
-      </p>
-      <p>
-        Source Scheme: <item-name :item="mapping.fromScheme" /><br>
-        Source Concept: <item-name :item="mapping.from.memberSet[0]" />
-      </p>
-      <p>
-        Target Scheme: <item-name :item="mapping.toScheme" /><br>
-        Target Concept: <item-name :item="mapping.to.memberSet[0]" />
-        <!-- TODO: 1-to-n mappings -->
-      </p>
+      <div class="row">
+        <div class="col col-25">
+          Source Scheme:
+        </div>
+        <div class="col">
+          <item-name :item="mapping.fromScheme" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-25">
+          Source Concept:
+        </div>
+        <div class="col">
+          <item-name :item="mapping.from.memberSet[0]" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-25">
+          Target Scheme:
+        </div>
+        <div class="col">
+          <item-name :item="mapping.toScheme" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-25">
+          Target Concept:
+        </div>
+        <div class="col">
+          <item-name :item="mapping.to.memberSet[0]" />
+          <!-- TODO: 1-to-n mappings -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-25">
+          Mapping Type:
+        </div>
+        <div class="col">
+          <auto-link
+            v-if="jskos.mappingTypeByType(mapping.type)"
+            :href="jskos.mappingTypeByType(mapping.type).uri">
+            {{ jskos.prefLabel(jskos.mappingTypeByType(mapping.type)) }} ({{ jskos.notation(jskos.mappingTypeByType(mapping.type)) }})
+          </auto-link>
+          <span v-else>
+            No mapping type
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-25">
+          Creator:
+        </div>
+        <div class="col">
+          <auto-link
+            v-if="mapping.creator && mapping.creator[0]"
+            :href="mapping.creator[0].uri">
+            {{ jskos.prefLabel(mapping.creator[0]) }}
+          </auto-link>
+          <span v-else>
+            No mapping type
+          </span>
+        </div>
+      </div>
+      <div
+        v-if="mapping.created"
+        class="row">
+        <div class="col col-25">
+          Created:
+        </div>
+        <div class="col">
+          {{ mapping.created.slice(0,10) }}
+        </div>
+      </div>
+      <div
+        v-if="mapping.modified"
+        class="row">
+        <div class="col col-25">
+          Modified:
+        </div>
+        <div class="col">
+          {{ mapping.modified.slice(0,10) }}
+        </div>
+      </div>
+      <div
+        v-if="mapping.partOf && mapping.partOf.length"
+        class="row">
+        <div class="col col-25">
+          Part of Concordance:
+        </div>
+        <div class="col">
+          <auto-link
+            :href="mapping.partOf[0].uri"
+            :text="jskos.prefLabel(mapping.partOf[0])" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-25">
+          Identifier:
+        </div>
+        <div class="col">
+          <div
+            v-for="identifier in [].concat(mapping.uri, mapping.identifier).filter(Boolean)"
+            :key="identifier">
+            <auto-link
+              :href="identifier"
+              :class="{
+                'font-weight-bold': identifier === mapping.uri,
+                'font-weight-regular': identifier !== mapping.uri,
+              }" /> <span v-if="identifier === mapping.uri">(URI)</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="section">

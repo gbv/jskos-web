@@ -19,4 +19,7 @@ import { ItemName, AutoLink } from "jskos-vue"
 app.use(ItemName)
 app.use(AutoLink)
 
+import jskos from "jskos-tools"
+app.config.globalProperties.jskos = jskos
+
 app.mount("#app")
