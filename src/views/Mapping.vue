@@ -14,7 +14,7 @@
           Source Scheme:
         </div>
         <div class="col">
-          <item-name :item="mapping.fromScheme" />
+          <item-name :item="state.getItem(mapping.fromScheme)" />
         </div>
       </div>
       <div class="row">
@@ -22,7 +22,9 @@
           Source Concept:
         </div>
         <div class="col">
-          <item-name :item="mapping.from.memberSet[0]" />
+          <item-list
+            :items="jskos.conceptsOfMapping(mapping, 'from').map(concept => state.getItem(concept))"
+            :row-mode="false" />
         </div>
       </div>
       <div class="row">
@@ -30,16 +32,17 @@
           Target Scheme:
         </div>
         <div class="col">
-          <item-name :item="mapping.toScheme" />
+          <item-name :item="state.getItem(mapping.toScheme)" />
         </div>
       </div>
       <div class="row">
         <div class="col col-25">
-          Target Concept:
+          Target Concept(s):
         </div>
         <div class="col">
-          <item-name :item="mapping.to.memberSet[0]" />
-          <!-- TODO: 1-to-n mappings -->
+          <item-list
+            :items="jskos.conceptsOfMapping(mapping, 'to').map(concept => state.getItem(concept))"
+            :row-mode="false" />
         </div>
       </div>
       <div class="row">
@@ -133,8 +136,11 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue"
+import { ref, watch, inject } from "vue"
 import axios from "axios"
+import jskos from "jskos-tools"
+
+const state = inject("state")
 
 const props = defineProps({
   uri: {
@@ -155,6 +161,8 @@ watch(props, (newProps, oldProps) => {
   }
   // Load mapping data in an async function
   (async () => {
+    // Wait for state initialization
+    await state.init()
     let data
     try {
       data = (await axios.get(uri)).data
@@ -164,6 +172,7 @@ watch(props, (newProps, oldProps) => {
     if (props.uri === uri) {
       if (data) {
         mapping.value = data
+        loadMappingDetails(data)
       } else {
         mapping.value = null
       }
@@ -172,4 +181,17 @@ watch(props, (newProps, oldProps) => {
 }, {
   immediate: true,
 })
+
+async function loadMappingDetails(mapping) {
+  const promises = []
+  for (const side of ["from", "to"]) {
+    const scheme = state.getItem(mapping[`${side}Scheme`])
+    if (scheme && scheme._registry && scheme._registry.getConcepts) {
+      // Load data for concepts on this side
+      const concepts = jskos.conceptsOfMapping(mapping, side).filter(concept => state.getItem(concept, false) === undefined)
+      concepts.length && promises.push(scheme._registry.getConcepts({ concepts }).then(concepts => concepts.forEach(concept => state.addItem(concept))))
+    }
+  }
+  return await Promise.all(promises)
+}
 </script>
