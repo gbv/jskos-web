@@ -79,9 +79,9 @@
       url('/fonts/nunito-v16-latin-700italic.svg#Nunito') format('svg'); /* Legacy iOS */
 }
 
-/* :root {
-
-} */
+:root {
+  --jskos-vue-loadingIndicator-secondary-color: #982a10;
+}
 
 .row {
   display: flex;

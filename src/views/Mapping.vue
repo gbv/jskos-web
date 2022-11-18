@@ -3,7 +3,7 @@
   <div class="section">
     <h2>Mapping</h2>
     <p v-if="mapping === undefined">
-      Loading mapping from URI {{ uri }}...
+      <loading-indicator /> Loading mapping from URI {{ uri }}...
     </p>
     <p v-else-if="mapping === null">
       Mapping data from URI {{ uri }} could not be loaded.

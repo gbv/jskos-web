@@ -1,5 +1,4 @@
 import { createApp } from "vue"
-import "@/style.css"
 
 import App from "@/App.vue"
 const app = createApp(App)
@@ -15,11 +14,14 @@ app.use(Login)
 app.use(UserStatus)
 
 import "jskos-vue/dist/style.css"
-import { ItemName, AutoLink } from "jskos-vue"
+import { ItemName, AutoLink, LoadingIndicator } from "jskos-vue"
 app.use(ItemName)
 app.use(AutoLink)
+app.use(LoadingIndicator)
 
 import jskos from "jskos-tools"
 app.config.globalProperties.jskos = jskos
+
+import "@/style.css"
 
 app.mount("#app")
