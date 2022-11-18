@@ -127,6 +127,29 @@
     </div>
   </div>
   <div class="section">
+    <h2>Links</h2>
+    <ul>
+      <li v-if="cocodaLink">
+        <auto-link
+          :href="cocodaLink"
+          text="Open in Cocoda" />
+      </li>
+      <li v-if="cocodaLinkWithConcepts">
+        <auto-link
+          :href="cocodaLinkWithConcepts"
+          text="Open in Cocoda (with concepts)" />
+      </li>
+      <li v-if="catalogEnrichmentLink">
+        <auto-link
+          :href="catalogEnrichmentLink"
+          text="Search for Enrichment in K10plus" />
+      </li>
+      <li v-if="mailToLink">
+        <a :href="mailToLink">Provide feedback about this mapping via email</a><br>(If this link doesn't work for you, please email coli-conc@gbv.de.)
+      </li>
+    </ul>
+  </div>
+  <div class="section">
     <h2>JSKOS Data</h2>
     <pre v-if="mapping"><code>{{ JSON.stringify(mapping, null, 2) }}</code></pre>
     <p v-else>
@@ -136,7 +159,7 @@
 </template>
 
 <script setup>
-import { ref, watch, inject } from "vue"
+import { ref, computed, watch, inject } from "vue"
 import axios from "axios"
 import jskos from "jskos-tools"
 
@@ -194,4 +217,39 @@ async function loadMappingDetails(mapping) {
   }
   return await Promise.all(promises)
 }
+
+const cocodaLink = computed(() => {
+  if (!mapping.value || !mapping.value.uri) {
+    return null
+  }
+  return `https://coli-conc.gbv.de/cocoda/app/?mappingUri=${encodeURIComponent(mapping.value.uri)}`
+})
+
+const cocodaLinkWithConcepts = computed(() => {
+  if (!cocodaLink.value) {
+    return null
+  }
+  let link = cocodaLink.value
+  for (const side of ["from", "to"]) {
+    let concept = jskos.conceptsOfMapping(mapping.value, side)[0]
+    if (concept && concept.uri) {
+      link += `&${side}Scheme=${encodeURIComponent(mapping.value[`${side}Scheme`].uri)}&${side}=${encodeURIComponent(concept.uri)}`
+    }
+  }
+  return link
+})
+
+const mailToLink = computed(() => {
+  if (!mapping.value || !mapping.value.uri) {
+    return null
+  }
+  return `mailto:coli-conc@gbv.de?subject=Mapping Feedback&body=Dear coli-conc team,%0A%0AI would like to provide feedback about this mapping: ${mapping.value.uri}`
+})
+// Taken directly out of Cocoda
+const catalogEnrichmentLink = computed(() => {
+  if (!mapping.value || !mapping.value.uri || !mapping.value.uri.startsWith("https://coli-conc.gbv.de/api/mappings/")) {
+    return null
+  }
+  return "https://opac.k10plus.de/DB=2.299/CMD?ACT=SRCHA&IKT=8659&TRM=" + mapping.value.uri.replace(/[\W_]+/g,"+")
+})
 </script>
