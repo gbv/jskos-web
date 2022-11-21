@@ -97,4 +97,10 @@
 .col {
   flex: 1;
   padding: 0 10px;
+  overflow-wrap: anywhere;
+}
+
+.section pre {
+  background-color: initial;
+  overflow: visible;
 }
