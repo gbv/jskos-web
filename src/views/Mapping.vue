@@ -151,7 +151,7 @@
   </div>
   <div class="section">
     <h2>JSKOS Data</h2>
-    <pre v-if="mapping"><code>{{ JSON.stringify(mapping, null, 2) }}</code></pre>
+    <pre v-if="json"><code v-html="json" /></pre>
     <p v-else>
       No JSKOS data available
     </p>
@@ -162,6 +162,7 @@
 import { ref, computed, watch, inject } from "vue"
 import axios from "axios"
 import jskos from "jskos-tools"
+import formatHighlight from "json-format-highlight"
 
 const state = inject("state")
 
@@ -252,4 +253,6 @@ const catalogEnrichmentLink = computed(() => {
   }
   return "https://opac.k10plus.de/DB=2.299/CMD?ACT=SRCHA&IKT=8659&TRM=" + mapping.value.uri.replace(/[\W_]+/g,"+")
 })
+
+const json = computed(() => mapping.value && formatHighlight(mapping.value, { stringColor: "#a02d11" }))
 </script>
