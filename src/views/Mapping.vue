@@ -149,13 +149,6 @@
       </li>
     </ul>
   </div>
-  <div class="section">
-    <h2>JSKOS Data</h2>
-    <pre v-if="json"><code v-html="json" /></pre>
-    <p v-else>
-      No JSKOS data available
-    </p>
-  </div>
 </template>
 
 <script setup>
@@ -254,5 +247,7 @@ const catalogEnrichmentLink = computed(() => {
   return "https://opac.k10plus.de/DB=2.299/CMD?ACT=SRCHA&IKT=8659&TRM=" + mapping.value.uri.replace(/[\W_]+/g,"+")
 })
 
+// TODO: Add JSON data as a popover or something
+// eslint-disable-next-line no-unused-vars
 const json = computed(() => mapping.value && formatHighlight(mapping.value, { stringColor: "#a02d11" }))
 </script>
