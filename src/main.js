@@ -14,9 +14,10 @@ app.use(Login)
 app.use(UserStatus)
 
 import "jskos-vue/dist/style.css"
-import { ItemName, ItemList, AutoLink, LoadingIndicator } from "jskos-vue"
+import { ItemName, ItemDetails, ItemList, AutoLink, LoadingIndicator } from "jskos-vue"
 app.use(ItemName)
 app.use(ItemList)
+app.use(ItemDetails)
 app.use(AutoLink)
 app.use(LoadingIndicator)
 

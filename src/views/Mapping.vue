@@ -127,6 +127,21 @@
     </div>
   </div>
   <div class="section">
+    <h2>Context</h2>
+    <div
+      v-if="mapping"
+      class="context">
+      <div>
+        <h4>Source</h4>
+        <item-details :item="state.getItem(jskos.conceptsOfMapping(mapping, 'from')[0])" />
+      </div>
+      <div>
+        <h4>Target</h4>
+        <item-details :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[0])" />
+      </div>
+    </div>
+  </div>
+  <div class="section">
     <h2>Links</h2>
     <ul>
       <li v-if="cocodaLink">
@@ -206,7 +221,20 @@ async function loadMappingDetails(mapping) {
     if (scheme && scheme._registry && scheme._registry.getConcepts) {
       // Load data for concepts on this side
       const concepts = jskos.conceptsOfMapping(mapping, side).filter(concept => state.getItem(concept, false) === undefined)
-      concepts.length && promises.push(scheme._registry.getConcepts({ concepts }).then(concepts => concepts.forEach(concept => state.addItem(concept))))
+      concepts.length && promises.push((async () => {
+        const loaded = await scheme._registry.getConcepts({ concepts })
+        for (const concept of loaded) {
+          // Load ancestors and narrower
+          if (!concept.ancestors || concept.ancestors.includes(null)) {
+            concept.ancestors = await scheme._registry.getAncestors({ concept })
+            concept.broader = concept.ancestors && concept.ancestors.slice(0, 1)
+          }
+          if (!concept.narrower || concept.narrower.includes(null)) {
+            concept.narrower = await scheme._registry.getNarrower({ concept })
+          }
+          state.addItem(concept)
+        }
+      })())
     }
   }
   return await Promise.all(promises)
@@ -251,3 +279,15 @@ const catalogEnrichmentLink = computed(() => {
 // eslint-disable-next-line no-unused-vars
 const json = computed(() => mapping.value && formatHighlight(mapping.value, { stringColor: "#a02d11" }))
 </script>
+
+<style scoped>
+.context {
+  display: flex;
+}
+.context > div {
+  flex: 1;
+}
+.context > div > h4 {
+  text-align: center;
+}
+</style>
