@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="section">
-    <h2>Mapping</h2>
+    <h2>Mapping Info</h2>
     <p v-if="mapping === undefined">
       <loading-indicator /> Loading mapping from URI {{ uri }}...
     </p>
@@ -127,7 +127,7 @@
     </div>
   </div>
   <div class="section">
-    <h2>Context</h2>
+    <h2>Context Info</h2>
     <div
       v-if="mapping"
       class="context">
