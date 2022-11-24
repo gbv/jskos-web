@@ -144,3 +144,6 @@ h2 {
 .jskos-vue-tabs-content {
   overflow: visible !important;
 }
+.jskos-vue-tabs-border-bottom {
+  border-bottom: none !important;
+}
