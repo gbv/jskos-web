@@ -89,31 +89,20 @@
   </footer>
 </template>
 
-<script>
-import { defineComponent, inject, watch } from "vue"
+<script setup>
+import { inject, watch } from "vue"
 import Home from "@/views/Home.vue"
 import Mapping from "@/views/Mapping.vue"
 
-export default defineComponent({
-  components: {
-    Home,
-    Mapping,
-  },
-  setup() {
-    const state = inject("state")
-    const login = inject("login")
-    state.init()
-    watch(() => state.selectedServer, (server) => {
-      if (server && server.login) {
-        login.connect(server.login.url, server.login)
-      } else {
-        login.disconnect()
-      }
-    })
-    return {
-      state,
-    }
-  },
+const state = inject("state")
+const login = inject("login")
+state.init()
+watch(() => state.selectedServer, (server) => {
+  if (server && server.login) {
+    login.connect(server.login.url, server.login)
+  } else {
+    login.disconnect()
+  }
 })
 </script>
 
