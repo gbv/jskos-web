@@ -161,11 +161,17 @@
       class="context">
       <div>
         <h4>Source</h4>
-        <item-details :item="state.getItem(jskos.conceptsOfMapping(mapping, 'from')[0])" />
+        <item-details
+          :item="state.getItem(jskos.conceptsOfMapping(mapping, 'from')[0])"
+          :show-tabs="false" />
+        <item-details-tabs :item="state.getItem(jskos.conceptsOfMapping(mapping, 'from')[0])" />
       </div>
       <div>
         <h4>Target</h4>
-        <item-details :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[0])" />
+        <item-details
+          :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[0])"
+          :show-tabs="false" />
+        <item-details-tabs :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[0])" />
       </div>
     </div>
   </div>
