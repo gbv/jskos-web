@@ -52,8 +52,22 @@
     <div />
     <Home v-if="!$route.query.uri" />
     <Mapping
+      v-else-if="itemType === 'mapping'"
+      :mapping="item" />
+    <div
       v-else
-      :uri="$route.query.uri" />
+      class="section">
+      <h2>{{ item === undefined ? "Loading..." : "Error" }}</h2>
+      <p v-if="item === undefined">
+        <loading-indicator /> Loading data from URI {{ $route.query.uri }}...
+      </p>
+      <p v-else-if="item === null">
+        Data from URI {{ $route.query.uri }} could not be loaded.
+      </p>
+      <p v-else>
+        Item of type {{ itemType || "Unknown" }} currently not supported.
+      </p>
+    </div>
   </main>
   <!-- The footer is mostly copied from https://coli-conc.gbv.de -->
   <footer class="footer">
@@ -90,9 +104,51 @@
 </template>
 
 <script setup>
-import { inject, watch } from "vue"
+import { inject, watch, ref } from "vue"
+import { useRoute } from "vue-router"
+import axios from "axios"
+import jskos from "jskos-tools"
+
 import Home from "@/views/Home.vue"
 import Mapping from "@/views/Mapping.vue"
+
+const route = useRoute()
+
+const item = ref(undefined)
+const itemType = ref(null)
+
+watch(() => route.query.uri, (uri, oldUri) => {
+  if (uri === oldUri) {
+    return
+  }
+  if (!uri) {
+    item.value = undefined
+    itemType.value = null
+    return
+  }
+  // Load data in an async function
+  (async () => {
+    // Wait for state initialization
+    await state.init()
+    let data
+    try {
+      data = (await axios.get(uri)).data
+    } catch (error) {
+      console.error(error)
+    }
+    if (route.query.uri === uri) {
+      if (data) {
+        item.value = data
+        itemType.value = jskos.guessObjectType(data, true)
+      } else {
+        item.value = null
+        itemType.value = null
+      }
+    }
+  })()
+}, {
+  immediate: true,
+})
 
 const state = inject("state")
 const login = inject("login")
