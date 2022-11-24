@@ -9,7 +9,7 @@
     </a>
     <h1>
       <router-link to="/">
-        JSKOS Web
+        JSKOS Viewer
       </router-link>
     </h1>
     <ul class="menu">
@@ -58,7 +58,7 @@
   <!-- The footer is mostly copied from https://coli-conc.gbv.de -->
   <footer class="footer">
     <p>
-      <b>JSKOS Web</b> is a web interface to view JSKOS data as part of
+      <b>JSKOS Viewer</b> is a web interface to view JSKOS data as part of
       <a
         href=""
         target="_blank">project coli-conc</a>.
