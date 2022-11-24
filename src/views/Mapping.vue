@@ -124,10 +124,37 @@
           </div>
         </div>
       </div>
+      <div
+        v-if="catalogEnrichmentLink"
+        class="row">
+        <div class="col col-25">
+          Search for Enrichment in K10plus:
+        </div>
+        <div class="col">
+          <auto-link :href="catalogEnrichmentLink" />
+        </div>
+      </div>
+      <div
+        v-if="mailToLink"
+        class="row">
+        <div class="col col-25">
+          Feedback:
+        </div>
+        <div class="col">
+          <a :href="mailToLink">Provide feedback about this mapping via email</a><br>(If this link doesn't work for you, please email coli-conc@gbv.de and include the mapping identifier.)
+        </div>
+      </div>
     </div>
   </div>
   <div class="section">
     <h2>Context Info</h2>
+    <div
+      v-if="cocodaLinkWithConcepts"
+      style="text-align: center;">
+      <auto-link
+        :href="cocodaLinkWithConcepts"
+        text="Open in Cocoda" />
+    </div>
     <div
       v-if="mapping"
       class="context">
@@ -140,29 +167,6 @@
         <item-details :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[0])" />
       </div>
     </div>
-  </div>
-  <div class="section">
-    <h2>Links</h2>
-    <ul>
-      <li v-if="cocodaLink">
-        <auto-link
-          :href="cocodaLink"
-          text="Open in Cocoda" />
-      </li>
-      <li v-if="cocodaLinkWithConcepts">
-        <auto-link
-          :href="cocodaLinkWithConcepts"
-          text="Open in Cocoda (with concepts)" />
-      </li>
-      <li v-if="catalogEnrichmentLink">
-        <auto-link
-          :href="catalogEnrichmentLink"
-          text="Search for Enrichment in K10plus" />
-      </li>
-      <li v-if="mailToLink">
-        <a :href="mailToLink">Provide feedback about this mapping via email</a><br>(If this link doesn't work for you, please email coli-conc@gbv.de.)
-      </li>
-    </ul>
   </div>
 </template>
 
