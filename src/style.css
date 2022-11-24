@@ -108,12 +108,9 @@
   padding: calc(1px + (100vw - 300px) / 100) calc((100vw - 250px) / 6);
 }
 h2 {
-  margin-bottom: 15px !important;
+  margin-bottom: 10px !important;
   font-size: 18px !important;
   padding: 8px 30px !important;
-}
-h4 {
-  margin-top: 0px;
 }
 
 .row {
@@ -139,7 +136,11 @@ h4 {
   overflow: visible;
 }
 
-/* Override list-style  for jskos-vue ItemDetails component */
-.section .jskos-vue-itemDetails ul {
+/* Override list-style for jskos-vue ItemDetails component */
+.section .jskos-vue-itemDetails-tabs ul {
   list-style: none !important;
+}
+/* Override overflow for jskos-view ItemDetails component */
+.jskos-vue-tabs-content {
+  overflow: visible !important;
 }
