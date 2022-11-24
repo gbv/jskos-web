@@ -288,6 +288,7 @@ const json = computed(() => mapping.value && formatHighlight(mapping.value, { st
 .context > div {
   flex: 1;
   min-width: 350px;
+  padding-right: 15px;
 }
 .context > div > h4 {
   text-align: center;
