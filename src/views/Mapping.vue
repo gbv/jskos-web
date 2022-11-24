@@ -259,11 +259,19 @@ async function loadMappingDetails(mapping) {
         for (const concept of loaded) {
           // Load ancestors and narrower
           if (!concept.ancestors || concept.ancestors.includes(null)) {
-            concept.ancestors = await scheme._registry.getAncestors({ concept })
-            concept.broader = concept.ancestors && concept.ancestors.slice(0, 1)
+            try {
+              concept.ancestors = await scheme._registry.getAncestors({ concept })
+              concept.broader = concept.ancestors && concept.ancestors.slice(0, 1)
+            } catch (error) {
+              concept.ancestors = []
+            }
           }
           if (!concept.narrower || concept.narrower.includes(null)) {
-            concept.narrower = await scheme._registry.getNarrower({ concept })
+            try {
+              concept.narrower = await scheme._registry.getNarrower({ concept })
+            } catch (error) {
+              concept.narrower = []
+            }
           }
           state.addItem(concept)
         }
