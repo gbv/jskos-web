@@ -152,14 +152,29 @@
         <h4>Source</h4>
         <item-details
           :item="state.getItem(jskos.conceptsOfMapping(mapping, 'from')[0])"
-          :show-tabs="false" />
-        <item-details-tabs :item="state.getItem(jskos.conceptsOfMapping(mapping, 'from')[0])" />
+          :show-tabs="false"
+          :item-list-options="{ rowMode: false }">
+          <template #beforeName>
+            <item-name
+              :item="state.getItem(mapping.fromScheme)"
+              :show-label="false" />
+          </template>
+        </item-details>
+        <item-details-tabs
+          :item="state.getItem(jskos.conceptsOfMapping(mapping, 'from')[0])" />
       </div>
       <div>
         <h4>Target</h4>
         <item-details
           :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[0])"
-          :show-tabs="false" />
+          :show-tabs="false"
+          :item-list-options="{ rowMode: false }">
+          <template #beforeName>
+            <item-name
+              :item="state.getItem(mapping.toScheme)"
+              :show-label="false" />
+          </template>
+        </item-details>
         <item-details-tabs :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[0])" />
       </div>
     </div>
