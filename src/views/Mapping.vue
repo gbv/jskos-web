@@ -151,22 +151,26 @@
       v-if="mapping"
       class="context">
       <div>
-        <h4>Source</h4>
+        <h4>
+          Source
+          (<item-name
+            :item="state.getItem(mapping.fromScheme)"
+            :show-label="false" />)
+        </h4>
         <item-details
           :item="state.getItem(jskos.conceptsOfMapping(mapping, 'from')[0])"
           :show-tabs="false"
-          :item-list-options="{ rowMode: false }">
-          <template #beforeName>
-            <item-name
-              :item="state.getItem(mapping.fromScheme)"
-              :show-label="false" />
-          </template>
-        </item-details>
+          :item-list-options="{ rowMode: false }" />
         <item-details-tabs
           :item="state.getItem(jskos.conceptsOfMapping(mapping, 'from')[0])" />
       </div>
       <div>
-        <h4>Target</h4>
+        <h4>
+          Target
+          (<item-name
+            :item="state.getItem(mapping.toScheme)"
+            :show-label="false" />)
+        </h4>
         <div
           v-if="jskos.conceptsOfMapping(mapping, 'to').length > 1"
           class="target-indexes">
@@ -185,13 +189,7 @@
           v-if="jskos.conceptsOfMapping(mapping, 'to').length"
           :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[targetConceptIndex])"
           :show-tabs="false"
-          :item-list-options="{ rowMode: false }">
-          <template #beforeName>
-            <item-name
-              :item="state.getItem(mapping.toScheme)"
-              :show-label="false" />
-          </template>
-        </item-details>
+          :item-list-options="{ rowMode: false }" />
         <item-details-tabs
           v-if="jskos.conceptsOfMapping(mapping, 'to').length"
           :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[targetConceptIndex])" />

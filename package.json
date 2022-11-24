@@ -25,7 +25,7 @@
     "cocoda-sdk": "^3.3.0",
     "gbv-login-client-vue": "^0.2.5",
     "jskos-tools": "^1.0.27",
-    "jskos-vue": "^0.2.4",
+    "jskos-vue": "^0.2.5",
     "json-format-highlight": "^1.0.4",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
