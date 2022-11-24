@@ -54,18 +54,16 @@
     <Mapping
       v-else
       :uri="$route.query.uri" />
-    <div class="section">
-      <h2>About</h2>
-      <p>
-        <b>JSKOS Web</b> is a web interface to view JSKOS data. Its source code and technical documentation are hosted on <a href="https://github.com/gbv/jskos-web">GitHub</a>.
-      </p>
-      <p>
-        This project is still under construction.
-      </p>
-    </div>
   </main>
   <!-- The footer is mostly copied from https://coli-conc.gbv.de -->
   <footer class="footer">
+    <p>
+      <b>JSKOS Web</b> is a web interface to view JSKOS data as part of
+      <a
+        href=""
+        target="_blank">project coli-conc</a>.
+      Its source code and technical documentation are hosted on <a href="https://github.com/gbv/jskos-web">GitHub</a>. This project is still under construction.
+    </p>
     <p>
       <strong>coli-conc</strong> is a project of
       <a
