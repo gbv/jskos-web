@@ -76,23 +76,13 @@
         </div>
       </div>
       <div
-        v-if="mapping.created"
+        v-if="mapping.created || mapping.modified"
         class="row">
         <div class="col col-25">
           Created:
         </div>
         <div class="col">
-          {{ mapping.created.slice(0,10) }}
-        </div>
-      </div>
-      <div
-        v-if="mapping.modified"
-        class="row">
-        <div class="col col-25">
-          Modified:
-        </div>
-        <div class="col">
-          {{ mapping.modified.slice(0,10) }}
+          {{ mapping.created.slice(0,10) }} <span v-if="mapping.modified && mapping.modified !== mapping.created">(Modified: {{ mapping.modified.slice(0,10) }})</span>
         </div>
       </div>
       <div

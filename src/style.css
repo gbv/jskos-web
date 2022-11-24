@@ -118,7 +118,8 @@ h4 {
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
+  font-size: 15px;
 }
 
 .col-25 {
