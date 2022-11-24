@@ -37,7 +37,7 @@
       </div>
       <div class="row">
         <div class="col col-25">
-          Target Concept(s):
+          Target Concept<span v-if="jskos.conceptsOfMapping(mapping, 'to').length > 1">s</span>:
         </div>
         <div class="col">
           <item-list
@@ -165,8 +165,22 @@
       </div>
       <div>
         <h4>Target</h4>
+        <div
+          v-if="jskos.conceptsOfMapping(mapping, 'to').length > 1"
+          class="target-indexes">
+          <span
+            v-for="index in jskos.conceptsOfMapping(mapping, 'to').map((value, index) => index)"
+            :key="index">
+            <a
+              href=""
+              :class="{ 'selected-index': index === targetConceptIndex }"
+              @click.prevent.stop="targetConceptIndex = index">
+              {{ index + 1 }}
+            </a>
+          </span>
+        </div>
         <item-details
-          :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[0])"
+          :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[targetConceptIndex])"
           :show-tabs="false"
           :item-list-options="{ rowMode: false }">
           <template #beforeName>
@@ -175,7 +189,7 @@
               :show-label="false" />
           </template>
         </item-details>
-        <item-details-tabs :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[0])" />
+        <item-details-tabs :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[targetConceptIndex])" />
       </div>
     </div>
   </div>
@@ -196,12 +210,16 @@ const props = defineProps({
   },
 })
 
+// If there is more than one target concept, this is the selected index
+const targetConceptIndex = ref(0)
+
 const mapping = ref(undefined)
 watch(props, (newProps, oldProps) => {
   const uri = newProps.uri, oldUri = oldProps && oldProps.uri
   if (uri === oldUri) {
     return
   }
+  targetConceptIndex.value = 0
   if (!uri) {
     mapping.value = undefined
     return
@@ -307,5 +325,15 @@ const json = computed(() => mapping.value && formatHighlight(mapping.value, { st
 }
 .context > div > h4 {
   text-align: center;
+}
+.target-indexes {
+  text-align: center;
+}
+.target-indexes a {
+  padding: 0 5px;
+}
+.target-indexes a.selected-index {
+  background: #982a10;
+  color: #f3f0f0;
 }
 </style>
