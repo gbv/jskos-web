@@ -140,8 +140,7 @@
     <h2>Context Info</h2>
     <div
       v-if="cocodaLinkWithConcepts"
-      style="display: inline-block; margin-left: 15px;"
-      class="font-size-medium">
+      style="display: inline-block; margin-left: 15px; font-size: 17px;">
       <auto-link
         :href="cocodaLinkWithConcepts"
         text="Open in Cocoda" />
