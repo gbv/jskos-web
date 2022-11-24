@@ -41,8 +41,10 @@
         </div>
         <div class="col">
           <item-list
+            v-if="jskos.conceptsOfMapping(mapping, 'to').length"
             :items="jskos.conceptsOfMapping(mapping, 'to').map(concept => state.getItem(concept))"
             :row-mode="false" />
+          <span v-else>No target concepts</span>
         </div>
       </div>
       <div class="row">
@@ -180,6 +182,7 @@
           </span>
         </div>
         <item-details
+          v-if="jskos.conceptsOfMapping(mapping, 'to').length"
           :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[targetConceptIndex])"
           :show-tabs="false"
           :item-list-options="{ rowMode: false }">
@@ -189,7 +192,12 @@
               :show-label="false" />
           </template>
         </item-details>
-        <item-details-tabs :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[targetConceptIndex])" />
+        <item-details-tabs
+          v-if="jskos.conceptsOfMapping(mapping, 'to').length"
+          :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[targetConceptIndex])" />
+        <span v-else>
+          No target concepts
+        </span>
       </div>
     </div>
   </div>
@@ -294,9 +302,10 @@ const cocodaLinkWithConcepts = computed(() => {
   }
   let link = cocodaLink.value
   for (const side of ["from", "to"]) {
+    link += `&${side}Scheme=${encodeURIComponent(mapping.value[`${side}Scheme`].uri)}`
     let concept = jskos.conceptsOfMapping(mapping.value, side)[0]
     if (concept && concept.uri) {
-      link += `&${side}Scheme=${encodeURIComponent(mapping.value[`${side}Scheme`].uri)}&${side}=${encodeURIComponent(concept.uri)}`
+      link += `&${side}=${encodeURIComponent(concept.uri)}`
     }
   }
   return link
