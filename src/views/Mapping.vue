@@ -119,6 +119,19 @@
         <auto-link :href="catalogEnrichmentLink" />
       </div>
     </div>
+    <div class="row">
+      <div class="col col-25">
+        Download:
+      </div>
+      <div class="col">
+        <auto-link
+          v-for="format in ['csv', 'tsv', 'json']"
+          :key="format"
+          :href="`${mapping.uri}?download=${format}`">
+          .{{ format }}
+        </auto-link>
+      </div>
+    </div>
     <div
       v-if="mailToLink"
       class="row">
