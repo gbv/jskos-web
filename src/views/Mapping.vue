@@ -259,7 +259,7 @@ async function loadMappingDetails(mapping) {
           }
           if (!concept.narrower || concept.narrower.includes(null)) {
             try {
-              concept.narrower = await scheme._registry.getNarrower({ concept })
+              concept.narrower = jskos.sortConcepts(await scheme._registry.getNarrower({ concept }), !!(scheme.DISPLAY && scheme.DISPLAY.numericalNotation))
             } catch (error) {
               concept.narrower = []
             }
