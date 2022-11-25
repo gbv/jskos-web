@@ -168,6 +168,7 @@
         <item-details
           :item="state.getItem(jskos.conceptsOfMapping(mapping, 'from')[0])"
           :show-tabs="false"
+          :dropzone="false"
           :item-list-options="{ rowMode: false }" />
         <item-details-tabs
           :item="state.getItem(jskos.conceptsOfMapping(mapping, 'from')[0])" />
@@ -197,6 +198,7 @@
           v-if="jskos.conceptsOfMapping(mapping, 'to').length"
           :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[targetConceptIndex])"
           :show-tabs="false"
+          :dropzone="false"
           :item-list-options="{ rowMode: false }" />
         <item-details-tabs
           v-if="jskos.conceptsOfMapping(mapping, 'to').length"
