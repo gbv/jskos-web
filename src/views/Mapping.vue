@@ -139,7 +139,7 @@
         Feedback:
       </div>
       <div class="col">
-        <a :href="mailToLink">Provide feedback about this mapping via email</a><br>(If this link doesn't work for you, please email coli-conc@gbv.de and include the mapping identifier.)
+        <a :href="mailToLink">Provide feedback about mapping via email</a> or email coli-conc@gbv.de with the mapping identifier
       </div>
     </div>
   </div>
