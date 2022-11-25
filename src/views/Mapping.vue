@@ -89,7 +89,10 @@
       <div class="col">
         <auto-link
           :href="mapping.partOf[0].uri"
-          :text="jskos.prefLabel(mapping.partOf[0])" />
+          :text="(jskos.languageMapContent(state.getItem(mapping.partOf[0]), 'scopeNote') || [])[0]" />
+        <span v-if="state.getItem(mapping.partOf[0]).creator && state.getItem(mapping.partOf[0]).creator.length">
+          by {{ jskos.prefLabel(state.getItem(mapping.partOf[0]).creator[0]) }}
+        </span>
       </div>
     </div>
     <div class="row">
@@ -210,6 +213,7 @@
 import { ref, computed, watch, inject } from "vue"
 import jskos from "jskos-tools"
 import formatHighlight from "json-format-highlight"
+import axios from "axios"
 
 const state = inject("state")
 
@@ -261,6 +265,20 @@ async function loadMappingDetails(mapping) {
             }
           }
           state.addItem(concept)
+        }
+      })())
+    }
+  }
+  // Also load concordance
+  if (mapping.partOf && mapping.partOf.length) {
+    const uri = mapping.partOf[0].uri
+    if (!state.getItem(mapping.partOf[0], false) && uri) {
+      promises.push((async () => {
+        try {
+          const concordance = (await axios.get(uri)).data
+          state.addItem(concordance)
+        } catch (error) {
+          // Ignore
         }
       })())
     }
