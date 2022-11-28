@@ -5,7 +5,6 @@ let locale
 
 try {
   locale = localStorage.getItem("jskos-web-locale")
-  console.log(locale)
 } catch (error) {
   console.warn("Error reading from locale storage. Language preference will not be saved.")
 }
