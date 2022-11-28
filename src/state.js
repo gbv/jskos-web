@@ -1,4 +1,4 @@
-import { reactive, readonly } from "vue"
+import { reactive, readonly, watch } from "vue"
 import jskos from "jskos-tools"
 
 // See vite.config.js for available environment configurations.
@@ -18,6 +18,8 @@ const bartoc = cdk.initializeRegistry({
 
 const state = reactive({
   items: {},
+  // Will be set below and contain available languages with the currently selected language first
+  languages: [],
   addItem(item, source) {
     let uris
     if (!item && source) {
@@ -112,5 +114,15 @@ const state = reactive({
     }
   },
 })
+
+// Set up watcher for locale to update languages in state
+import i18n from "@/i18n.js"
+state.languages = i18n.global.availableLocales
+watch(() => i18n.global.locale.value, (locale) => {
+  state.languages = [locale].concat(i18n.global.availableLocales.filter(lang => lang !== locale))
+}, { immediate: true })
+// Set up jskos-tools' languagePreference
+jskos.languagePreference.store = state
+jskos.languagePreference.path = "languages"
 
 export default readonly(state)
