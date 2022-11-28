@@ -120,6 +120,11 @@ import i18n from "@/i18n.js"
 state.languages = i18n.global.availableLocales
 watch(() => i18n.global.locale.value, (locale) => {
   state.languages = [locale].concat(i18n.global.availableLocales.filter(lang => lang !== locale))
+  try {
+    localStorage.setItem("jskos-web-locale", locale)
+  } catch (error) {
+    console.warn("Error writing to locale storage. Language preference will not be saved.")
+  }
 }, { immediate: true })
 // Set up jskos-tools' languagePreference
 jskos.languagePreference.store = state

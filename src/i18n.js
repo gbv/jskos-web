@@ -1,12 +1,22 @@
 import { createI18n } from "vue-i18n"
 import messages from "@/../locale.json"
 
-// Determine default locale through the user's browser
 let locale
-for (const lang of navigator.languages || []) {
-  if (lang.startsWith("de") || lang.startsWith("en")) {
-    locale = lang.slice(0, 2)
-    break
+
+try {
+  locale = localStorage.getItem("jskos-web-locale")
+  console.log(locale)
+} catch (error) {
+  console.warn("Error reading from locale storage. Language preference will not be saved.")
+}
+
+// Determine default locale through the user's browser
+if (!locale) {
+  for (const lang of navigator.languages || []) {
+    if (lang.startsWith("de") || lang.startsWith("en")) {
+      locale = lang.slice(0, 2)
+      break
+    }
   }
 }
 
