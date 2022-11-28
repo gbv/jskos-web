@@ -24,7 +24,7 @@
         <user-status>
           <template #before>
             <p>
-              Select JSKOS Server:
+              {{ $t("general.loginSelect") }}:
             </p>
             <ul>
               <li
@@ -78,34 +78,34 @@
       class="section">
       <h2>{{ item === undefined ? "Loading..." : "Error" }}</h2>
       <p v-if="item === undefined">
-        <loading-indicator /> Loading data from URI {{ $route.query.uri }}...
+        <loading-indicator /> {{ $t("general.loading") }} {{ $route.query.uri }}...
       </p>
       <p v-else-if="item === null">
-        Data from URI {{ $route.query.uri }} could not be loaded.
+        {{ $t("general.loadingFailed", { uri: $route.query.uri }) }}
       </p>
       <p v-else>
-        Item of type {{ itemType || "Unknown" }} currently not supported.
+        {{ $t("general.unsupportedType", { type: itemType || "Unknown" }) }}
       </p>
     </div>
   </main>
   <!-- The footer is mostly copied from https://coli-conc.gbv.de -->
   <footer class="footer">
     <p>
-      <b>JSKOS Viewer</b> is a web interface to view JSKOS data as part of
+      <b>JSKOS Viewer</b> {{ $t("footer.1_1") }}
       <a
         href=""
-        target="_blank">project coli-conc</a>.
-      Its source code and technical documentation are hosted on <a href="https://github.com/gbv/jskos-web">GitHub</a>. This project is still under construction.
+        target="_blank">{{ $t("footer.1_2") }}</a>.
+      {{ $t("footer.1_3") }} <a href="https://github.com/gbv/jskos-web">GitHub</a>{{ $t("footer.1_4") }}
     </p>
     <p>
-      <strong>coli-conc</strong> is a project of
+      <strong>coli-conc</strong> {{ $t("footer.2_1") }}
       <a
         href="https://www.gbv.de/"
-        target="_blank">Verbundzentrale des GBV (VZG)</a>.
-      It is funded by German Research Foundation (DFG)
+        target="_blank">{{ $t("footer.2_2") }}</a>.
+      {{ $t("footer.2_3") }}
       <a
         href="https://gepris.dfg.de/gepris/projekt/276843344"
-        target="_blank">2015-2019</a> and
+        target="_blank">2015-2019</a> {{ $t("footer.2_4") }}
       <a
         href="https://gepris.dfg.de/gepris/projekt/455051200"
         target="_blank">2021-2023</a>.

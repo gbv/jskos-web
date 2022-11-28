@@ -5,7 +5,11 @@
       "changeLanguage": "Change language to English",
       "home": "Home",
       "openInCocoda": "In Cocoda öffnen",
-      "by": "von"
+      "by": "von",
+      "loginSelect": "Wähle JSKOS-Server",
+      "loading": "Lade Daten von URI",
+      "loadingFailed": "Daten von URI {uri} konnten nicht geladen werden.",
+      "unsupportedType": "Item des Typs {type} wird aktuell nicht unterstützt."
     },
     "terms": {
       "source": "Quelle",
@@ -32,6 +36,16 @@
       "targetConcept": "Zielkonzept",
       "type": "Mappingtyp",
       "noMappingType": "Kein Mappingtyp"
+    },
+    "footer": {
+      "1_1": "ist ein Webinterface zur Darstellung von JSKOS-Daten als Teil des",
+      "1_2": "coli-conc Projekts",
+      "1_3": "Der Quellcode und die technische Dokumentation werden über",
+      "1_4": " bereitgestellt. Dieses Tool ist noch in der Entwicklungsphase.",
+      "2_1": "ist ein Projekt der",
+      "2_2": "Verbundzentrale des GBV (VZG)",
+      "2_3": "Es wird gefördert von der Deutschen Forschungsgemeinschaft (DFG)",
+      "2_4": "und"
     }
   },
   "en": {
@@ -40,7 +54,11 @@
       "changeLanguage": "Sprache zu Deutsch wechseln",
       "home": "Home",
       "openInCocoda": "Open in Cocoda",
-      "by": "by"
+      "by": "by",
+      "loginSelect": "Select JSKOS Server",
+      "loading": "Loading data from URI",
+      "loadingFailed": "Data from URI {uri} could not be loaded.",
+      "unsupportedType": "Item of type {type} currently not supported."
     },
     "terms": {
       "source": "Source",
@@ -67,6 +85,16 @@
       "targetConcept": "Target Concept",
       "type": "Mapping Type",
       "noMappingType": "No mapping type"
+    },
+    "footer": {
+      "1_1": "is a web interface to view JSKOS data as part of",
+      "1_2": "project coli-conc",
+      "1_3": "Its source code and technical documentation are hosted on",
+      "1_4": ". This tool is still under construction.",
+      "2_1": "is a project of",
+      "2_2": "Verbundzentrale des GBV (VZG)",
+      "2_3": "It is funded by German Research Foundation (DFG)",
+      "2_4": "and"
     }
   }
 }

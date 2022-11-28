@@ -91,7 +91,7 @@
           :href="mapping.partOf[0].uri"
           :text="(jskos.languageMapContent(state.getItem(mapping.partOf[0]), 'scopeNote') || [])[0]" />
         <span v-if="state.getItem(mapping.partOf[0]).creator && state.getItem(mapping.partOf[0]).creator.length">
-          {{ $t("general.by") }} {{ jskos.prefLabel(state.getItem(mapping.partOf[0]).creator[0]) }}
+          {{ " " + $t("general.by") }} {{ jskos.prefLabel(state.getItem(mapping.partOf[0]).creator[0]) }}
         </span>
       </div>
     </div>
@@ -153,7 +153,7 @@
       style="display: inline-block; margin-left: 15px; font-size: 17px;">
       <auto-link
         :href="cocodaLinkWithConcepts"
-        text="Open in Cocoda" />
+        :text="$t('general.openInCocoda')" />
     </div>
     <div
       v-if="mapping"
