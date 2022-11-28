@@ -1,10 +1,10 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="section">
-    <h2>Mapping Info</h2>
+    <h2>{{ $t("mapping.mappingInfo") }}</h2>
     <div class="row">
       <div class="col col-25">
-        Source Scheme:
+        {{ $t("mapping.sourceScheme") }}:
       </div>
       <div class="col">
         <item-name :item="state.getItem(mapping.fromScheme)" />
@@ -12,7 +12,7 @@
     </div>
     <div class="row">
       <div class="col col-25">
-        Source Concept:
+        {{ $t("mapping.sourceConcept") }}:
       </div>
       <div class="col">
         <item-list
@@ -22,7 +22,7 @@
     </div>
     <div class="row">
       <div class="col col-25">
-        Target Scheme:
+        {{ $t("mapping.targetScheme") }}:
       </div>
       <div class="col">
         <item-name :item="state.getItem(mapping.toScheme)" />
@@ -30,19 +30,19 @@
     </div>
     <div class="row">
       <div class="col col-25">
-        Target Concept<span v-if="jskos.conceptsOfMapping(mapping, 'to').length > 1">s</span>:
+        {{ $t("mapping.targetConcept") }}:
       </div>
       <div class="col">
         <item-list
           v-if="jskos.conceptsOfMapping(mapping, 'to').length"
           :items="jskos.conceptsOfMapping(mapping, 'to').map(concept => state.getItem(concept))"
           :row-mode="false" />
-        <span v-else>No target concepts</span>
+        <span v-else>{{ $t("mapping.noTargetConcepts") }}</span>
       </div>
     </div>
     <div class="row">
       <div class="col col-25">
-        Mapping Type:
+        {{ $t("mapping.type") }}:
       </div>
       <div class="col">
         <auto-link
@@ -51,13 +51,13 @@
           {{ jskos.prefLabel(jskos.mappingTypeByType(mapping.type)) }} ({{ jskos.notation(jskos.mappingTypeByType(mapping.type)) }})
         </auto-link>
         <span v-else>
-          No mapping type
+          {{ $t("mapping.noMappingType") }}
         </span>
       </div>
     </div>
     <div class="row">
       <div class="col col-25">
-        Creator:
+        {{ $t("terms.creator") }}:
       </div>
       <div class="col">
         <auto-link
@@ -66,7 +66,7 @@
           {{ jskos.prefLabel(mapping.creator[0]) }}
         </auto-link>
         <span v-else>
-          No mapping type
+          {{ $t("terms.noCreators") }}
         </span>
       </div>
     </div>
@@ -74,30 +74,30 @@
       v-if="mapping.created || mapping.modified"
       class="row">
       <div class="col col-25">
-        Created:
+        {{ $t("terms.created") }}:
       </div>
       <div class="col">
-        {{ mapping.created.slice(0,10) }} <span v-if="mapping.modified && mapping.modified !== mapping.created">(Modified: {{ mapping.modified.slice(0,10) }})</span>
+        {{ mapping.created.slice(0,10) }} <span v-if="mapping.modified && mapping.modified !== mapping.created">({{ $t("terms.modified") }}: {{ mapping.modified.slice(0,10) }})</span>
       </div>
     </div>
     <div
       v-if="mapping.partOf && mapping.partOf.length"
       class="row">
       <div class="col col-25">
-        Part of Concordance:
+        {{ $t("mapping.partOf") }}:
       </div>
       <div class="col">
         <auto-link
           :href="mapping.partOf[0].uri"
           :text="(jskos.languageMapContent(state.getItem(mapping.partOf[0]), 'scopeNote') || [])[0]" />
         <span v-if="state.getItem(mapping.partOf[0]).creator && state.getItem(mapping.partOf[0]).creator.length">
-          by {{ jskos.prefLabel(state.getItem(mapping.partOf[0]).creator[0]) }}
+          {{ $t("general.by") }} {{ jskos.prefLabel(state.getItem(mapping.partOf[0]).creator[0]) }}
         </span>
       </div>
     </div>
     <div class="row">
       <div class="col col-25">
-        Identifier:
+        {{ $t("terms.identifier") }}:
       </div>
       <div class="col">
         <div
@@ -116,7 +116,7 @@
       v-if="catalogEnrichmentLink"
       class="row">
       <div class="col col-25">
-        Search for Enrichment in K10plus:
+        {{ $t("mapping.enrichment") }}:
       </div>
       <div class="col">
         <auto-link :href="catalogEnrichmentLink" />
@@ -142,12 +142,12 @@
         Feedback:
       </div>
       <div class="col">
-        <a :href="mailToLink">Provide feedback about mapping via email</a> or email coli-conc@gbv.de with the mapping identifier
+        <a :href="mailToLink">{{ $t("mapping.feedbackLink") }}</a> {{ $t("mapping.feedbackText") }}
       </div>
     </div>
   </div>
   <div class="section">
-    <h2>Context Info</h2>
+    <h2>{{ $t("mapping.contextInfo") }}</h2>
     <div
       v-if="cocodaLinkWithConcepts"
       style="display: inline-block; margin-left: 15px; font-size: 17px;">
@@ -160,7 +160,7 @@
       class="context">
       <div>
         <h4>
-          Source
+          {{ $t("terms.source") }}
           (<item-name
             :item="state.getItem(mapping.fromScheme)"
             :show-label="false" />)
@@ -175,7 +175,7 @@
       </div>
       <div>
         <h4>
-          Target
+          {{ $t("terms.target") }}
           (<item-name
             :item="state.getItem(mapping.toScheme)"
             :show-label="false" />)
@@ -204,7 +204,7 @@
           v-if="jskos.conceptsOfMapping(mapping, 'to').length"
           :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[targetConceptIndex])" />
         <span v-else>
-          No target concepts
+          {{ $t("mapping.noTargetConcepts") }}
         </span>
       </div>
     </div>

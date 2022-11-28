@@ -1,0 +1,72 @@
+{
+  "de": {
+    "general": {
+      "backToMainPage": "zurück zur coli-conc Webseite",
+      "changeLanguage": "Change language to English",
+      "home": "Home",
+      "openInCocoda": "In Cocoda öffnen",
+      "by": "von"
+    },
+    "terms": {
+      "source": "Quelle",
+      "target": "Ziel",
+      "vocabulary": "Vokabular",
+      "concept": "Konzept",
+      "creator": "Erstellt von",
+      "created": "Erstellt",
+      "modified": "Bearbeitet",
+      "identifier": "Identifier",
+      "noCreators": "Keine Ersteller"
+    },
+    "mapping": {
+      "mappingInfo": "Mapping-Info",
+      "contextInfo": "Kontext-Info",
+      "partOf": "Teil von Konkordanz",
+      "enrichment": "Anreicherung im K10plus suchen",
+      "feedbackLink": "Feedback über dieses Mapping via E-Mail geben",
+      "feedbackText": "oder eine E-Mail mit dem Mapping-Identifier an coli-conc{'@'}gbv.de schicken",
+      "sourceScheme": "Quellvokabular",
+      "targetScheme": "Zielvokabular",
+      "noTargetConcepts": "Keine Zielkonzepte",
+      "sourceConcept": "Quellkonzept",
+      "targetConcept": "Zielkonzept",
+      "type": "Mappingtyp",
+      "noMappingType": "Kein Mappingtyp"
+    }
+  },
+  "en": {
+    "general": {
+      "backToMainPage": "back to coli-conc website",
+      "changeLanguage": "Sprache zu Deutsch wechseln",
+      "home": "Home",
+      "openInCocoda": "Open in Cocoda",
+      "by": "by"
+    },
+    "terms": {
+      "source": "Source",
+      "target": "Target",
+      "vocabulary": "Vocabulary",
+      "concept": "Concept",
+      "creator": "Creator",
+      "created": "Created",
+      "modified": "Modified",
+      "identifier": "Identifier",
+      "noCreators": "No creators"
+    },
+    "mapping": {
+      "mappingInfo": "Mapping Info",
+      "contextInfo": "Context Info",
+      "partOf": "Part of Concordance",
+      "enrichment": "Search for Enrichment in K10plus",
+      "feedbackLink": "Provide feedback about mapping via email",
+      "feedbackText": "or email coli-conc{'@'}gbv.de with the mapping identifier",
+      "sourceScheme": "Source Vocabulary",
+      "targetScheme": "Target Vocabulary",
+      "noTargetConcepts": "No target concepts",
+      "sourceConcept": "Source Concept",
+      "targetConcept": "Target Concept",
+      "type": "Mapping Type",
+      "noMappingType": "No mapping type"
+    }
+  }
+}

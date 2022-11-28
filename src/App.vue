@@ -17,7 +17,7 @@
         <a
           href="https://coli-conc.gbv.de/"
           title="Go to coli-conc website">
-          ⬅ back to coli-conc website
+          ⬅ {{ $t("general.backToMainPage") }}
         </a>
       </li>
       <li>
@@ -43,6 +43,25 @@
             <hr>
           </template>
         </user-status>
+      </li>
+      <!-- TODO: Improve -->
+      <li class="menu-item-language">
+        <a
+          v-if="$i18n.locale === 'de'"
+          href=""
+          :title="$t('general.changeLanguage')"
+          @click.prevent.stop="$i18n.locale = 'en'">
+          <span class="font-weight-light">EN</span><br>DE
+          <div class="line" />
+        </a>
+        <a
+          v-else
+          href=""
+          :title="$t('general.changeLanguage')"
+          @click.prevent.stop="$i18n.locale = 'de'">
+          EN<br><span class="font-weight-light">DE</span>
+          <div class="line" />
+        </a>
       </li>
     </ul>
     <div style="clear:both" />

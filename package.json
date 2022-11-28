@@ -28,6 +28,7 @@
     "jskos-vue": "^0.2.6",
     "json-format-highlight": "^1.0.4",
     "vue": "^3.2.45",
+    "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
