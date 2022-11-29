@@ -139,10 +139,12 @@
       v-if="mailToLink"
       class="row">
       <div class="col col-25">
-        Feedback:
+        {{ $t("mapping.feedback") }}:
       </div>
       <div class="col">
-        <a :href="mailToLink">{{ $t("mapping.feedbackLink") }}</a> {{ $t("mapping.feedbackText") }}
+        <span v-if="cocodaLinkWithConcepts">
+          <a :href="cocodaLinkWithConcepts">{{ $t("mapping.feedback1") }}</a> {{ $t("general.or") }}
+        </span> <a :href="mailToLink">{{ $t("mapping.feedback2") }}</a> {{ $t("mapping.feedback3") }}
       </div>
     </div>
   </div>
