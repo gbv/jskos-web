@@ -143,7 +143,7 @@
       </div>
       <div class="col">
         <span v-if="cocodaLinkWithConcepts">
-          <a :href="cocodaLinkWithConcepts">{{ $t("mapping.feedback1") }}</a> {{ $t("general.or") }}
+          <auto-link :href="cocodaLinkWithConcepts">{{ $t("mapping.feedback1") }}</auto-link> {{ $t("general.or") }}
         </span> <a :href="mailToLink">{{ $t("mapping.feedback2") }}</a> {{ $t("mapping.feedback3") }}
       </div>
     </div>
