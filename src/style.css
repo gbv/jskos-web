@@ -147,6 +147,6 @@ h2 {
 .jskos-vue-tabs-border-bottom {
   border-bottom: none !important;
 }
-.jskos-vue-itemList > div {
+.row .jskos-vue-itemList > div {
   padding-left: 0;
 }
