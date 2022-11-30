@@ -93,6 +93,11 @@
         <span v-if="state.getItem(mapping.partOf[0]).creator && state.getItem(mapping.partOf[0]).creator.length">
           {{ " " + $t("general.by") }} {{ jskos.prefLabel(state.getItem(mapping.partOf[0]).creator[0]) }}
         </span>
+        <span v-if="mappingsOfConcordanceLink">
+          (<auto-link
+            :href="mappingsOfConcordanceLink"
+            :text="$t('mapping.partOfShowMappings')" />)
+        </span>
       </div>
     </div>
     <div class="row">
@@ -329,6 +334,15 @@ const catalogEnrichmentLink = computed(() => {
 // TODO: Add JSON data as a popover or something
 // eslint-disable-next-line no-unused-vars
 const json = computed(() => props.mapping && formatHighlight(props.mapping, { stringColor: "#a02d11" }))
+
+// Link to all mappings of a concordance
+const mappingsOfConcordanceLink = computed(() => {
+  const concordanceUri = props.mapping?.partOf?.[0]?.uri
+  if (!concordanceUri) {
+    return null
+  }
+  return `https://coli-conc.gbv.de/cocoda/app/concordances.html?search=${encodeURIComponent(JSON.stringify({ partOf: concordanceUri }))}`
+})
 </script>
 
 <style scoped>
