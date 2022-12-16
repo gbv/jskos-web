@@ -8,6 +8,8 @@
       "by": "von",
       "or": "oder",
       "loginSelect": "Wähle JSKOS-Server",
+      "showDataForUriButton": "Datensatz für diese URI darstellen",
+      "showDataForUriPlaceholder": "URI einer JSKOS-Entität",
       "loading": "Lade Daten von URI",
       "loadingFailed": "Daten von URI {uri} konnten nicht geladen werden.",
       "unsupportedType": "Item des Typs {type} wird aktuell nicht unterstützt."
@@ -61,6 +63,8 @@
       "by": "by",
       "or": "or",
       "loginSelect": "Select JSKOS Server",
+      "showDataForUriButton": "Show data for this URI",
+      "showDataForUriPlaceholder": "URI of a JSKOS entity",
       "loading": "Loading data from URI",
       "loadingFailed": "Data from URI {uri} could not be loaded.",
       "unsupportedType": "Item of type {type} currently not supported."

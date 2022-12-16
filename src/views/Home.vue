@@ -3,6 +3,19 @@
   <div class="section">
     <h2>{{ $t("general.home") }}</h2>
     <p>
+      <input
+        v-model="uri"
+        style="width: 100%; max-width: 400px;"
+        type="text"
+        :placeholder="$t('general.showDataForUriPlaceholder')"
+        @keyup.enter="showDataForUri">
+      <button
+        :disabled="buttonDisabled"
+        @click="showDataForUri">
+        {{ $t("general.showDataForUriButton") }}
+      </button>
+    </p>
+    <p>
       <router-link to="/?uri=https://coli-conc.gbv.de/api/mappings/761fe565-3815-4c14-b277-4fc980639ced">
         Example Mapping
       </router-link> ·
@@ -15,3 +28,22 @@
     </p>
   </div>
 </template>
+
+<script setup>
+import { ref, computed } from "vue"
+import { useRouter } from "vue-router"
+const router = useRouter()
+
+const uri = ref(null)
+const buttonDisabled = computed(() => {
+  return !uri.value || uri.value === "" || !uri.value.startsWith("http")
+})
+
+function showDataForUri() {
+  if (buttonDisabled.value) {
+    return
+  }
+  router.push(`?uri=${uri.value}`)
+}
+
+</script>
