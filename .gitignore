@@ -5,3 +5,6 @@ dist-ssr
 *.local
 
 .env
+
+# pm2 ecosystem file
+ecosystem.config.json

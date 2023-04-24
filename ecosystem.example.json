@@ -1,0 +1,7 @@
+{
+  "name": "jskos-viewer",
+  "script": "./index.js",
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
