@@ -1,0 +1,14 @@
+name: Build
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x, 20.x ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/build
+        with:
+          version: ${{ matrix.node-version }}
