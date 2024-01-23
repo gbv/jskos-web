@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  jskos-web:
+    # image: ghcr.io/gbv/jskos-web
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./data:/usr/src/app/dist
+    ports:
+      - 3453:80
+    environment:
+      - LOGIN_SERVER=http://localhost:3004/
+      - JSKOS_SERVER=http://localhost:3000
+      - BASE=/
+    restart: unless-stopped
