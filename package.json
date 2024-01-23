@@ -2,7 +2,7 @@
   "name": "jskos-web",
   "version": "0.0.0",
   "engines": {
-    "node": ">=14.18"
+    "node": ">=18"
   },
   "scripts": {
     "dev": "vite --port 3453",

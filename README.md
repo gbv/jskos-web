@@ -17,7 +17,7 @@ Under construction.
 
 ## Install
 
-You will need Node.js version 14.18 or later. Currently, using v16 is recommended.
+You will need Node.js 18 or later. Currently, using v20 is recommended.
 
 ~~~bash
 git clone https://github.com/gbv/jskos-web.git
@@ -91,4 +91,4 @@ PRs accepted.
 Small note: If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 
 ## License
-MIT Copyright (c) 2022 Verbundzentrale des GBV (VZG)
+MIT Copyright (c) 2024 Verbundzentrale des GBV (VZG)
