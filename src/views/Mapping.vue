@@ -178,7 +178,8 @@
           :dropzone="false"
           :item-list-options="{ rowMode: false }" />
         <item-details-tabs
-          :item="state.getItem(jskos.conceptsOfMapping(mapping, 'from')[0])" />
+          :item="state.getItem(jskos.conceptsOfMapping(mapping, 'from')[0])"
+          :flat="true" />
       </div>
       <div>
         <h4>
@@ -209,7 +210,8 @@
           :item-list-options="{ rowMode: false }" />
         <item-details-tabs
           v-if="jskos.conceptsOfMapping(mapping, 'to').length"
-          :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[targetConceptIndex])" />
+          :item="state.getItem(jskos.conceptsOfMapping(mapping, 'to')[targetConceptIndex])"
+          :flat="true" />
         <span v-else>
           {{ $t("mapping.noTargetConcepts") }}
         </span>
@@ -367,5 +369,11 @@ const mappingsOfConcordanceLink = computed(() => {
 .target-indexes a.selected-index {
   background: #982a10;
   color: #f3f0f0;
+}
+</style>
+
+<style>
+.jskos-vue-itemDetails-name {
+  font-size: 20px;
 }
 </style>
