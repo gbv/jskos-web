@@ -10,7 +10,7 @@ RUN node -v
 RUN npm -v
 
 ## Make Docker-related scripts available in root folder
-COPY docker/*.sh .
+COPY .docker/*.sh .
 
 ## Use http-server for serving the site
 RUN npm i -g http-server

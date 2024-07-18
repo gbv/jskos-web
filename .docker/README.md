@@ -3,7 +3,6 @@
 Create a `docker-compose.yml` file:
 
 ```yml
-version: "3"
 services:
   jskos-web:
     image: ghcr.io/gbv/jskos-web
@@ -43,4 +42,4 @@ The app will be served on port 80.
 
 ## Publishing the Docker Image
 
-For maintainers: As the site within the container uses Git to keep itself updated, updates to the published image won't be necessary unless there are changes to the image itself (`Dockerfile` or any of the Docker-related scripts). To trigger an updated Docker image, go to https://github.com/gbv/jskos-web/actions/workflows/docker.yml and run the workflow on branch `main`.
+For maintainers: As the site within the container uses Git to keep itself updated, updates to the published image won't be necessary unless there are changes to the image itself (`Dockerfile` or any of the Docker-related scripts). The Docker workflow on GitHub will therefore only build and publish a new image when necessary.

@@ -1,6 +1,14 @@
 name: Publish Docker
-# Needs to be manually triggered (as an update is only required if the Dockerfile or related scripts were updated)
-on: workflow_dispatch
+# Only run when Docker-related files are changed
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .docker/Dockerfile
+      - .docker/entrypoint.sh
+      - .docker/build.sh
+      - .github/workflows/docker.yml
 
 # Adapted from:
 # - https://github.com/docker/metadata-action#semver
@@ -37,7 +45,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: docker/Dockerfile
+          file: .docker/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
