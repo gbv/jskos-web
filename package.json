@@ -1,6 +1,7 @@
 {
   "name": "jskos-web",
   "version": "0.0.0",
+  "type": "module",
   "engines": {
     "node": ">=18.12"
   },
@@ -8,8 +9,8 @@
     "dev": "vite --port 3453",
     "build": "vite build",
     "serve": "vite preview",
-    "lint": "eslint --ignore-path .gitignore --ext .js,.vue .",
-    "fix": "npm run lint -- --fix",
+    "lint": "eslint",
+    "fix": "eslint --fix",
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
@@ -34,9 +35,8 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
     "dotenv": "^16.4.5",
-    "eslint": "^8.57.0",
-    "eslint-config-gbv": "^1.1.0",
-    "eslint-plugin-vue": "^9.27.0",
+    "eslint": "~9.11",
+    "eslint-config-gbv": "~2.1",
     "lint-staged": "^15.2.7",
     "pre-commit": "^1.2.2",
     "vite": "^5.3.4"
