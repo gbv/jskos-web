@@ -12,6 +12,7 @@ app.use(i18n)
 import state from "@/state.js"
 app.use(state)
 
+import "gbv-login-client-vue/style"
 import { UserStatus, Login } from "gbv-login-client-vue"
 app.use(Login)
 app.use(UserStatus)

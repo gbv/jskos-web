@@ -22,23 +22,23 @@
     "lint-staged"
   ],
   "dependencies": {
-    "axios": "^1.7.2",
-    "cocoda-sdk": "^3.4.9",
-    "gbv-login-client-vue": "^0.3.0",
-    "jskos-tools": "^1.0.40",
-    "jskos-vue": "^0.3.11",
+    "axios": "^1.7.7",
+    "cocoda-sdk": "^3.4.12",
+    "gbv-login-client-vue": "^1.0.0",
+    "jskos-tools": "^1.0.42",
+    "jskos-vue": "^0.3.15",
     "json-format-highlight": "^1.0.4",
-    "vue": "^3.4.32",
-    "vue-i18n": "^9.13.1",
-    "vue-router": "^4.4.0"
+    "vue": "^3.5.10",
+    "vue-i18n": "^9.14.1",
+    "vue-router": "^4.4.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue": "^5.1.4",
     "dotenv": "^16.4.5",
     "eslint": "~9.11",
     "eslint-config-gbv": "~2.1",
-    "lint-staged": "^15.2.7",
+    "lint-staged": "^15.2.10",
     "pre-commit": "^1.2.2",
-    "vite": "^5.3.4"
+    "vite": "^5.4.8"
   }
 }
