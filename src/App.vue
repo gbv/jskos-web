@@ -22,7 +22,9 @@
       </li>
       <li>
         <user-status>
-          <template #before>
+          <template 
+            v-if="state.config.jskos.length > 1"
+            #before>
             <p>
               {{ $t("general.loginSelect") }}:
             </p>
