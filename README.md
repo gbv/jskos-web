@@ -17,7 +17,7 @@ Under construction.
 
 ## Install
 
-You will need Node.js 18 or later. Currently, using v20 is recommended.
+You will need Node.js 22 or later. Currently, using v24 is recommended.
 
 ~~~bash
 git clone https://github.com/gbv/jskos-web.git
